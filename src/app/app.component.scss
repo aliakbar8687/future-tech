@@ -1,0 +1,153 @@
+/* styles.scss */
+
+// Define primary and secondary colors as variables
+$primaryColor: #4d07f0;
+$secondaryColor: #55d406;
+
+// Apply styles to the form and its elements
+form {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid $primaryColor;
+  border-radius: 5px;
+
+  // Center the form vertically and horizontally
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  // Add a shadow effect
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  // Clear float inside the form
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+div {
+  text-align: center;
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid $secondaryColor;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box; // Add this property to include padding and border in the width calculation
+
+    // Add some additional styles on focus
+    &:focus {
+      outline: none;
+      border-color: $primaryColor;
+      box-shadow: 0 0 5px $primaryColor;
+    }
+  }
+
+  // Style the button
+  // button {
+  //   padding: 10px 20px;
+  //   background-color: $primaryColor;
+  //   color: #010101;
+  //   border: none;
+  //   border-radius: 5px;
+  //   cursor: pointer;
+
+  //   &:hover {
+  //     background-color: darken($primaryColor, 10%);
+  //   }
+  // }
+}
+
+
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.table tr:hover {
+  background-color: #ddd;
+}
+
+.table th {
+  background-color: #af4c4c;
+  color: white;
+}
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+.small-label {
+  font-size: 14px;
+}
+
+.small-input {
+  font-size: 14px;
+  padding: 5px;
+  width: 150px; 
+}
+
+.table {
+  border-collapse: collapse;
+  border: 2px solid darkgreen;
+  width: 90%; 
+  margin: auto; 
+}
+
+
+.table thead th {
+  background-color: darkgreen;
+  color: white;
+  border: 2px solid darkgreen;
+  padding: 8px;
+  text-align: left;
+}
+
+
+.table tbody tr {
+  border-bottom: 2px solid darkgreen;
+}
+
+
+.table tbody td {
+  border: 2px solid darkgreen;
+  padding: 8px;
+}
+
+
+.table tbody td:nth-child(3) {
+  white-space: normal;
+}
