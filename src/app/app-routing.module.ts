@@ -1,32 +1,39 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CategoryComponent } from './category/category.component';
+import { SubCategoryComponent } from './sub-category/sub-category.component';
+import { ProductComponent } from './product/product.component';
+import { AddCategoryComponent } from './category/add-category/add-category.component';
+import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'category',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: HomeComponent
+    path: 'category',
+    component: CategoryComponent,
+    children: [
+      {
+        path: 'add',
+        component: AddCategoryComponent
+      },
+      {
+        path: 'edit/:id',
+        component: EditCategoryComponent
+      }
+    ]
   },
   {
-    path: 'about',
-    component: AboutUsComponent
+    path: 'sub-category',
+    component: SubCategoryComponent
   },
   {
-    path: 'contact',
-    component: ContactUsComponent
-  },
-  {
-    path: 'user-detail/:id',
-    component: UserDetailComponent
+    path: 'product',
+    component: ProductComponent
   },
   {
     path: 'not-found',

@@ -3,29 +3,37 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
+interface Menu {
+  text: string;
+  path: string;
+}
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  isLoggedIn$: Observable<boolean>;
   isLoggedIn: boolean;
+  menus: Menu[] = [
+    {
+      text: 'Category',
+      path: 'category'
+    },
+    {
+      text: 'Sub Category',
+      path: 'sub-category'
+    },
+    {
+      text: 'Product',
+      path: 'product'
+    }
+  ];
 
   constructor(
     private router: Router,
     private _authService: AuthService
   ) {
-    // this.isLoggedIn$ = this._authService.isLoggedIn$;
-    this._authService.isLoggedIn$.subscribe(
-      res => {
-        console.log(res);
-        this.isLoggedIn = res;
-      },
-      err => {
-
-      }
-    );
+    this._authService.isLoggedIn$.subscribe(res => this.isLoggedIn = res);
   }
 
   redirect(path: string): void {
@@ -35,7 +43,6 @@ export class HeaderComponent {
   login() {
     this._authService.login();
   }
-
 
   logout() {
     this._authService.logout();
