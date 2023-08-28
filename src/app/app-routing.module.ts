@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { CategoryComponent } from './category/category.component';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
-import { ProductComponent } from './product/product.component';
-import { AddCategoryComponent } from './category/add-category/add-category.component';
-import { EditCategoryComponent } from './category/edit-category/edit-category.component';
+import { AddSubCategoryComponent } from './sub-category/add-sub-category/add-sub-category.component';
+import { EditSubCategoryComponent } from './sub-category/edit-sub-category/edit-sub-category.component';
 
 const routes: Routes = [
   {
@@ -15,25 +13,25 @@ const routes: Routes = [
   },
   {
     path: 'category',
-    component: CategoryComponent,
+    loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
+  },
+  {
+    path: 'sub-category',
+    component: SubCategoryComponent,
     children: [
       {
         path: 'add',
-        component: AddCategoryComponent
+        component: AddSubCategoryComponent
       },
       {
         path: 'edit/:id',
-        component: EditCategoryComponent
+        component: EditSubCategoryComponent
       }
     ]
   },
   {
-    path: 'sub-category',
-    component: SubCategoryComponent
-  },
-  {
     path: 'product',
-    component: ProductComponent
+    loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
   },
   {
     path: 'not-found',
@@ -46,7 +44,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes , {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -14,20 +14,20 @@
         <table class="table mt-4">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let category of [1, 2, 3, 4]">
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+              <tr *ngFor="let category of categoryList">
+                <th scope="row">{{category.id}}</th>
+                <td>{{category.name}}</td>
+                <td>{{category.description}}</td>
                 <td>
                     <button class="btn btn-sm btn-outline-danger me-2">Delete</button>
-                    <a class="btn btn-sm btn-success" [routerLink]="['edit', 2]">Edit</a>
+                    <a class="btn btn-sm btn-success" [routerLink]="['edit', 'id']">Edit</a>
                 </td>
               </tr>
             </tbody>

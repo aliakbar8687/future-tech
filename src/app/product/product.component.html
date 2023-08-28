@@ -1,1 +1,39 @@
-<p>product works!</p>
+<div class="d-flex justify-content-between my-2">
+    <div>
+        <h2>Category</h2>
+    </div>
+    <div>
+        <a class="btn btn-outline-success" [routerLink]="['add']">
+            Add category
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div [ngClass]="isChildActivate ? 'col-md-8' : 'col-md-12'">
+        <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let category of productList">
+                <th scope="row">{{category.id}}</th>
+                <td>{{category.name}}</td>
+                <td>{{category.description}}</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-danger me-2">Delete</button>
+                    <a class="btn btn-sm btn-success" [routerLink]="['edit', 'id']">Edit</a>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <router-outlet></router-outlet>
+    </div>
+</div>

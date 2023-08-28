@@ -6,6 +6,11 @@ export interface Category {
     description: string;
     marks?: Marks
 }
+export interface CategoryList {
+    id: number;
+    name: string;
+   description: string;
+}
 
 export interface Search {
     categories: Array<Category>;
