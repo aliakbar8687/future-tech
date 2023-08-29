@@ -1,1 +1,13 @@
-<p>edit-sub-category works!</p>
+<div class="mt-4">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Clothing">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" rows="3"></textarea>
+    </div>
+
+    <a class="btn btn-outline-success me-2" [routerLink]="['/sub-category']">Cancel</a>
+    <button class="btn btn-success">Save</button>
+</div>

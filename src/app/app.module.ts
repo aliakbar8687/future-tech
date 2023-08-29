@@ -7,7 +7,7 @@ import { TextHighlightDirective } from './custom/directives/text-highlight.direc
 import { ConvertINRPipe } from './custom/pipe/convert-inr.pipe';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { SubCategoryComponent } from './sub-category/sub-category.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +16,6 @@ import { SubCategoryComponent } from './sub-category/sub-category.component';
     ConvertINRPipe,
     HeaderComponent,
     NotFoundComponent,
-    SubCategoryComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth.service';
 
 interface Menu {
@@ -13,7 +14,7 @@ interface Menu {
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  isLoggedIn: boolean;
+  isLoggedIn: User | null;
   menus: Menu[] = [
     {
       text: 'Category',

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { SubCategoryComponent } from './sub-category/sub-category.component';
-import { AddSubCategoryComponent } from './sub-category/add-sub-category/add-sub-category.component';
-import { EditSubCategoryComponent } from './sub-category/edit-sub-category/edit-sub-category.component';
+import { authGuard } from './guards/auth.guard';
+import { roleGuard } from './guards/role.guard';
 
 const routes: Routes = [
   {
@@ -13,24 +12,20 @@ const routes: Routes = [
   },
   {
     path: 'category',
+    canActivate: [authGuard, roleGuard],
+    data: ['admin', 'super_admin', 'it'],
     loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
   },
   {
     path: 'sub-category',
-    component: SubCategoryComponent,
-    children: [
-      {
-        path: 'add',
-        component: AddSubCategoryComponent
-      },
-      {
-        path: 'edit/:id',
-        component: EditSubCategoryComponent
-      }
-    ]
+    canActivate: [authGuard, roleGuard],
+    data: ['admin', 'it'],
+    loadChildren:() => import('./sub-category/sub-category.module').then(m => m.SubCategoryModule)
   },
   {
     path: 'product',
+    canActivate: [authGuard],
+    data: ['it', 'super_admin'],
     loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
   },
   {
