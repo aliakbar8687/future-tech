@@ -3,9 +3,9 @@
         <h2>Category</h2>
     </div>
     <div>
-        <a class="btn btn-outline-success" [routerLink]="['add']">
+        <button class="btn btn-outline-success" (click)="onAdd()">
             Add category
-        </a>
+        </button>
     </div>
 </div>
 
@@ -27,13 +27,22 @@
                 <td>{{category.description}}</td>
                 <td>
                     <button class="btn btn-sm btn-outline-danger me-2">Delete</button>
-                    <a class="btn btn-sm btn-success" [routerLink]="['edit', 'id']">Edit</a>
+                    <button class="btn btn-sm btn-success" (click)="onEdit(category.id)">Edit</button>
                 </td>
               </tr>
             </tbody>
         </table>
     </div>
-    <div class="col-md-4">
-        <router-outlet></router-outlet>
+    <div class="col-md-4" *ngIf="isChildActivate">
+        <ng-container *ngIf="showAddCategory; else editCategoryTemplate">
+            <app-add-category
+                (onCancel)="handleCancel()"></app-add-category>
+        </ng-container>
+
+        <ng-template #editCategoryTemplate>
+            <app-edit-category
+                [category]="selectedCategory"
+                (onCancel)="handleCancel($event)"></app-edit-category>
+        </ng-template>
     </div>
 </div>

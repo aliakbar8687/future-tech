@@ -1,13 +1,19 @@
+<h4>Edit {{ category?.name }}</h4>
 <div class="mt-4">
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Clothing">
+        <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Clothing"
+            [value]="category?.name">
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" rows="3"></textarea>
+        <textarea class="form-control" id="description" rows="3">{{ category?.description }}</textarea>
     </div>
 
-    <a class="btn btn-outline-success me-2" [routerLink]="['/category']">Cancel</a>
+    <button class="btn btn-outline-success me-2" (click)="handleClose()">Cancel</button>
     <button class="btn btn-success">Save</button>
 </div>

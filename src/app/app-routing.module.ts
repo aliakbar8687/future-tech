@@ -12,19 +12,19 @@ const routes: Routes = [
   },
   {
     path: 'category',
-    canActivate: [authGuard, roleGuard],
+    // canActivate: [authGuard, roleGuard],
     data: ['admin', 'super_admin', 'it'],
     loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
   },
   {
     path: 'sub-category',
-    canActivate: [authGuard, roleGuard],
+    // canActivate: [authGuard, roleGuard],
     data: ['admin', 'it'],
     loadChildren:() => import('./sub-category/sub-category.module').then(m => m.SubCategoryModule)
   },
   {
     path: 'product',
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     data: ['it', 'super_admin'],
     loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
   },
