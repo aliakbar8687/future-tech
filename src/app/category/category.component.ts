@@ -1,7 +1,4 @@
-import { category } from './../student';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { Subscription, filter } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { CategoryList } from '../models/Category';
 
 @Component({
@@ -10,11 +7,11 @@ import { CategoryList } from '../models/Category';
   styleUrls: ['./category.component.scss']
 })
 
-export class CategoryComponent implements OnInit, OnDestroy {
+export class CategoryComponent implements OnInit {
   isChildActivate: boolean = false;
-  routeSubscription: Subscription;
+  showAddCategory: boolean = false;
 
-   categoryList:CategoryList[]=[
+  categoryList: CategoryList[] = [
     {
       id:1,
       name:"Men's Clothing",
@@ -30,25 +27,31 @@ export class CategoryComponent implements OnInit, OnDestroy {
       name:"Kids's Clothing",
       description:"Welcome to the World of Kid's Clothing"
     },
-  ]
+  ];
+
+  selectedCategory: CategoryList;
 
   constructor(
-    private router: Router
   ) {
   }
 
   ngOnInit(): void {
-    this.routeSubscription = this.router
-        .events
-        .pipe(filter(event => event instanceof NavigationEnd))
-        .subscribe(
-          (res) => {
-            this.isChildActivate = (res as NavigationEnd).url.includes('add') || (res as NavigationEnd).url.includes('edit') ? true : false;
-          }
-        )
   }
 
-  ngOnDestroy(): void {
-    this.routeSubscription?.unsubscribe();
+  onEdit(id: number): void {
+    this.isChildActivate = true;
+    this.showAddCategory = false;
+    this.selectedCategory = this.categoryList.find(category => category.id === id) as CategoryList;
   }
-}
+
+  handleCancel(ev: CategoryList | null = null) {
+    console.log(ev);
+    
+    this.isChildActivate = false;
+  }
+
+  onAdd(): void {
+    this.isChildActivate = true;
+    this.showAddCategory = true;
+  }
+ }
