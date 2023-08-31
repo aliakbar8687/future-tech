@@ -6,22 +6,22 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CategoryRoutingModule } from './category-routing.module';
-
-
+import { SharedModule } from '../shared/shared/shared.module';
 
 @NgModule({
   declarations: [
     CategoryComponent,
     AddCategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
-    CategoryRoutingModule
+    CategoryRoutingModule,
+    SharedModule
   ],
   exports: [
     RouterModule
-]
+  ]
 })
 export class CategoryModule { }

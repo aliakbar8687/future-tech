@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
 import { CategoryList } from '../models/Category';
+import { Button } from '../models/Sub-Header';
 
 @Component({
   selector: 'app-product',
@@ -37,7 +38,15 @@ export class ProductComponent implements OnInit,OnDestroy{
       name:"Women suits",
       description:"Suits collections"
     }
-  ]
+  ];
+
+  subHeaderButton: Button[] = [
+    {
+      text: 'Add Product',
+      class: 'btn btn-outline-success'
+    }
+  ];
+  
   constructor(
     private router: Router
   ) {
@@ -56,5 +65,9 @@ export class ProductComponent implements OnInit,OnDestroy{
 
   ngOnDestroy(): void {
     this.routeSubscription?.unsubscribe();
+  }
+
+  onSearch(searchText: string) {
+    console.log(searchText);
   }
 }

@@ -2,12 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
 import { CategoryList } from '../models/Category';
+import { Button } from '../models/Sub-Header';
 @Component({
   selector: 'app-sub-category',
   templateUrl: './sub-category.component.html',
   styleUrls: ['./sub-category.component.scss']
 })
-export class SubCategoryComponent implements OnInit,OnDestroy{
+export class SubCategoryComponent implements OnInit, OnDestroy {
   isChildActivate: boolean = false;
   routeSubscription: Subscription;
   subCategoryList:CategoryList[]=[
@@ -26,7 +27,15 @@ export class SubCategoryComponent implements OnInit,OnDestroy{
       name:"Western Wear",
       description:"western wear collections"
     },
-  ]
+  ];
+
+  subHeaderButton: Button[] = [
+    {
+      text: 'Add Sub Category',
+      class: 'btn btn-outline-success'
+    }
+  ];
+  
   constructor(
     private router: Router
   ) {
@@ -45,6 +54,10 @@ export class SubCategoryComponent implements OnInit,OnDestroy{
 
   ngOnDestroy(): void {
     this.routeSubscription?.unsubscribe();
+  }
+
+  onSearch(searchText: string) {
+    console.log(searchText);
   }
 }
 
