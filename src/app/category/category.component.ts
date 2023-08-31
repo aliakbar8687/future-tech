@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryList } from '../models/Category';
+import { CategoryService } from '../services/category.service';
+import { Button } from '../models/Sub-Header';
 
 @Component({
   selector: 'app-category',
@@ -10,28 +12,18 @@ import { CategoryList } from '../models/Category';
 export class CategoryComponent implements OnInit {
   isChildActivate: boolean = false;
   showAddCategory: boolean = false;
-
-  categoryList: CategoryList[] = [
-    {
-      id:1,
-      name:"Men's Clothing",
-      description:"Welcome to the World of Men's Clothing"
-    },
-    {
-      id:2,
-      name:"Women's Clothing",
-      description:"Welcome to the World of Women's Clothing"
-    },
-    {
-      id:3,
-      name:"Kids's Clothing",
-      description:"Welcome to the World of Kid's Clothing"
-    },
-  ];
-
+  categories: CategoryList[] = [];
   selectedCategory: CategoryList;
 
+  subHeaderButton: Button[] = [
+    {
+      text: 'Add Category',
+      class: 'btn btn-outline-success'
+    }
+  ]
+
   constructor(
+    private _categoryService: CategoryService
   ) {
   }
 
@@ -41,17 +33,19 @@ export class CategoryComponent implements OnInit {
   onEdit(id: number): void {
     this.isChildActivate = true;
     this.showAddCategory = false;
-    this.selectedCategory = this.categoryList.find(category => category.id === id) as CategoryList;
+    this.selectedCategory = this.categories.find(category => category.id === id) as CategoryList;
   }
 
   handleCancel(ev: CategoryList | null = null) {
-    console.log(ev);
-    
     this.isChildActivate = false;
   }
 
   onAdd(): void {
     this.isChildActivate = true;
     this.showAddCategory = true;
+  }
+
+  onSearch(searchText: string) {
+    console.log(searchText);
   }
  }

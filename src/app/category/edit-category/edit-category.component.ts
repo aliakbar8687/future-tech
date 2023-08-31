@@ -7,7 +7,7 @@ import { CategoryList } from 'src/app/models/Category';
   styleUrls: ['./edit-category.component.scss']
 })
 export class EditCategoryComponent {
-  @Input('category') category: CategoryList;
+  @Input('category') category: CategoryList ;
 
   @Output('onCancel') onCancel = new EventEmitter<CategoryList>();
 

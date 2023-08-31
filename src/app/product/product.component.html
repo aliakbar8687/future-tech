@@ -1,13 +1,8 @@
-<div class="d-flex justify-content-between my-2">
-    <div>
-        <h2>Category</h2>
-    </div>
-    <div>
-        <a class="btn btn-outline-success" [routerLink]="['add']">
-            Add category
-        </a>
-    </div>
-</div>
+<app-sub-header
+    [title]="'Product'"
+    [buttons]="subHeaderButton"
+    [canSearch]="false"
+    (onSearch)="onSearch($event)"></app-sub-header>
 
 <div class="row">
     <div [ngClass]="isChildActivate ? 'col-md-8' : 'col-md-12'">
