@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CategoryList } from '../models/Category';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CategoryService {
   private categories: CategoryList[] = [
     {
@@ -27,4 +25,5 @@ export class CategoryService {
   list(): CategoryList[] {
     return this.categories;
   }
+
 }

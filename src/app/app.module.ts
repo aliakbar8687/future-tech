@@ -7,6 +7,7 @@ import { TextHighlightDirective } from './custom/directives/text-highlight.direc
 import { ConvertINRPipe } from './custom/pipe/convert-inr.pipe';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CategoryService } from './services/category.service';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    // CategoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,9 +6,8 @@ import { Button } from '../models/Sub-Header';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss']
+  styleUrls: ['./category.component.scss'],
 })
-
 export class CategoryComponent implements OnInit {
   isChildActivate: boolean = false;
   showAddCategory: boolean = false;
@@ -28,6 +27,7 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.categories = this._categoryService.list();
   }
 
   onEdit(id: number): void {
