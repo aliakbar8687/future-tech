@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Button } from 'src/app/models/Sub-Header';
 
 @Component({
@@ -17,5 +17,19 @@ export class SubHeaderComponent {
 
   onSearchClick(): void {
     this.onSearch.emit(this.searchInput);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    console.log('child ngOnChanges');
+  }
+
+  ngOnInit(): void {
+    console.log('child ngOnInit');
+  }
+
+  ngOnDestroy(): void {
+    console.log('child ngOnDestroy');
+    
   }
 }

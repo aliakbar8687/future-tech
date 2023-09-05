@@ -33,7 +33,7 @@ export const Students =  [
     },
 ];
 
-export const category: Array<Category> = [
+export const category: any[] = [
   {
     id: 1,
     name:'ali',
