@@ -20,16 +20,11 @@ export class SubHeaderComponent {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    console.log('child ngOnChanges');
   }
 
   ngOnInit(): void {
-    console.log('child ngOnInit');
   }
 
   ngOnDestroy(): void {
-    console.log('child ngOnDestroy');
-    
   }
 }

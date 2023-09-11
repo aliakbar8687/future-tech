@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../models/Category';
 import { CategoryService } from '../services/category.service';
 import { Button } from '../models/Sub-Header';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category',
