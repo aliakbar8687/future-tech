@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Button } from 'src/app/models/Sub-Header';
 
 @Component({
@@ -14,8 +14,29 @@ export class SubHeaderComponent {
   @Output('onSearch') onSearch = new EventEmitter<string>();
 
   searchInput: string;
+  titleRef: any;
 
   onSearchClick(): void {
     this.onSearch.emit(this.searchInput);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+  }
+
+  ngOnInit(): void {
+    console.log(this.searchInput);
+  }
+
+  ngAfterViewInit(): void {
+    // this.searchButtonRef.nativeElement.click();
+    // setTimeout(() => this.changeTitleStyle(), 2000)
+  }
+
+  changeTitleStyle() {
+    (this.titleRef.nativeElement as HTMLElement).style.color = 'blue';
+    (this.titleRef.nativeElement as HTMLElement).style.fontSize = '30px';
+  }
+
+  ngOnDestroy(): void {
   }
 }

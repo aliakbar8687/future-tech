@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { CategoryRoutingModule } from './category-routing.module';
 import { SharedModule } from '../shared/shared/shared.module';
 import { CategoryService } from '../services/category.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CategoryService } from '../services/category.service';
     CommonModule,
     FormsModule,
     CategoryRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   exports: [
     RouterModule

@@ -1,10 +1,17 @@
+export interface CategoryResponse {
+    message: string;
+    totalRecords?: number;
+    payload: Category[]
+}
 export interface Category {
-    id: number;
+    _id: string;
     name: string;
-    fees: number;
-    admissionDate: Date | string | number;
     description: string;
-    marks?: Marks
+    image: string;
+    isActive: boolean;
+    isDeleted: boolean;
+    createdAt: string;
+    products: any[]
 }
 export interface CategoryList {
     id: number;

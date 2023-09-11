@@ -11,7 +11,7 @@ import { SubCategoryService } from './sub-category.service';
   styleUrls: ['./sub-category.component.scss']
 })
 export class SubCategoryComponent implements OnInit, OnDestroy {
-  isChildActivate: boolean = false;
+    isChildActivate: boolean = false;
   routeSubscription: Subscription;
   subCategoryList: CategoryList[] = [];
 
@@ -41,12 +41,26 @@ export class SubCategoryComponent implements OnInit, OnDestroy {
         )
   }
 
+  ngAfterViewInit(): void {
+    // this.subHeaderComponentRef.changeTitleStyle();
+    // console.log(this.categoryNameRef.toArray()[1]);
+    // this.categoryNameRef.forEach((c, i) => {
+    //   console.log(c);
+    //   if (i === 1) (c.nativeElement as HTMLElement).style.color = 'red';
+    // })
+    // (this.categoryNameRef.toArray()[0].nativeElement as HTMLElement).style.color = 'red';
+  }
+
   ngOnDestroy(): void {
     this.routeSubscription?.unsubscribe();
   }
 
   onSearch(searchText: string) {
     console.log(searchText);
+  }
+
+  onHeaderClick() {
+    console.log('gefgdfgfd');
   }
 }
 
