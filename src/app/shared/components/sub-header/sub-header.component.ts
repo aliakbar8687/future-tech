@@ -24,17 +24,6 @@ export class SubHeaderComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.searchInput);
-  }
-
-  ngAfterViewInit(): void {
-    // this.searchButtonRef.nativeElement.click();
-    // setTimeout(() => this.changeTitleStyle(), 2000)
-  }
-
-  changeTitleStyle() {
-    (this.titleRef.nativeElement as HTMLElement).style.color = 'blue';
-    (this.titleRef.nativeElement as HTMLElement).style.fontSize = '30px';
   }
 
   ngOnDestroy(): void {
