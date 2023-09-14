@@ -16,18 +16,23 @@
               </tr>
             </thead>
             <tbody>
+              <ng-container *ngIf="subCategoryList.length,else noRecord">
               <tr *ngFor="let category of subCategoryList">
                 <th scope="row">{{category.id}}</th>
                 <td>{{category.name}}</td>
                 <td>{{category.description}}</td>
                 <td>
-                    <button class="btn btn-sm btn-outline-danger me-2">Delete</button>
-                    <a class="btn btn-sm btn-success" [routerLink]="['edit', 2]">Edit</a>
+                    <button appButtonLarge class="btn btn-danger me-2" >Delete</button>
+                    <a appButtonLarge class="btn btn-sm btn-success" [routerLink]="['edit', 2]">Edit</a>
                 </td>
               </tr>
+            </ng-container>
             </tbody>
         </table>
     </div>
+    <ng-template #noRecord>
+    <ng-container> no record found</ng-container>
+    </ng-template>
     <div class="col-md-4">
         <router-outlet></router-outlet>
     </div>
