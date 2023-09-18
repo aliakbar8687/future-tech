@@ -1,30 +1,20 @@
 import { Injectable } from '@angular/core';
-import { CategoryList } from '../models/Category';
+import { HttpClient } from '@angular/common/http';
+import { CategoryResponse } from '../models/Category';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CategoryService {
-  private categories: CategoryList[] = [
-    {
-      id:1,
-      name:"Men's Clothing",
-      description:"Welcome to the World of Men's Clothing"
-    },
-    {
-      id:2,
-      name:"Women's Clothing",
-      description:"Welcome to the World of Women's Clothing"
-    },
-    {
-      id:3,
-      name:"Kids's Clothing",
-      description:"Welcome to the World of Kid's Clothing"
-    },
-  ];
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  list(): CategoryList[] {
-    return this.categories;
+  list(): Observable<CategoryResponse> {
+    return this.http.get<CategoryResponse>('category');
   }
+
+  delete(_id: string): Observable<CategoryResponse> {
+    return this.http.delete<CategoryResponse>(`category/${_id}`);
+  }
+
 }

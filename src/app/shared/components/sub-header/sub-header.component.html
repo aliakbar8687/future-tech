@@ -1,30 +1,36 @@
+<ng-content select=".header"></ng-content>
 <div class="d-flex justify-content-between my-4">
-    <div>
-        <h4>
+<div>
+        <h4 appRainbow>
             {{ title }}
         </h4>
     </div>
-    <div class="d-flex" *ngIf="canSearch">
-        <div class="me-2">
+    <div class="d-flex flex-column dropdown-container" *ngIf="canSearch">
+        <div appDropdown class="me-2 dropdown-selector">
+            
             <input
+            
+                #searchInput
                 type="search"
                 name=""
                 id=""
-                class="form-control"
-                [(ngModel)]="searchInput">
+                class="form-control">
+                
         </div>
         
-        <div>
-            <button class="btn btn-outline-success" (click)="onSearchClick()">
-                Search
-            </button>
+        <div  class="dropdown-content">
+            <div *ngFor="let item of subHeaderDropDown">
+            <p>{{item.text}}</p>
         </div>
+    </div>
     </div>
     <div>
         <ng-container *ngFor="let button of buttons">
-            <button [ngClass]="button.class" class="me-2">
-                {{ button.text }}
+            <button  [ngClass]="button.class" class="me-2">
+                {{ button.text }} 
             </button>
         </ng-container>
     </div>
 </div>
+<ng-content select=".footer"></ng-content>
+
