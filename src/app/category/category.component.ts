@@ -23,7 +23,6 @@ export class CategoryComponent implements OnInit {
   ]
 
   constructor(
-    private _categoryService: CategoryService
   ) {
   }
 
