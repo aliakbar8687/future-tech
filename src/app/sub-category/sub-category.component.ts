@@ -21,6 +21,8 @@ export class SubCategoryComponent implements OnInit, OnDestroy {
       class: 'btn btn-outline-success'
     }
   ];
+
+  
   
   constructor(
     private router: Router,

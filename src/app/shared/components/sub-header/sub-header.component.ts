@@ -16,6 +16,13 @@ export class SubHeaderComponent {
   searchInput: string;
   titleRef: any;
 
+  subHeaderDropDown:any[]=[
+    {text:'Black jeans with narrow fit'},
+    {text:'T-shirt with a printed Graphics'},
+    {text:'sun glasses rayban'},
+    {text:' Blazer with round neck'},
+  ];
+
   onSearchClick(): void {
     this.onSearch.emit(this.searchInput);
   }
@@ -25,7 +32,6 @@ export class SubHeaderComponent {
 
   ngOnInit(): void {
   }
-
   ngOnDestroy(): void {
   }
 }

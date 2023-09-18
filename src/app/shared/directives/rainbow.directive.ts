@@ -19,7 +19,7 @@ export class RainbowDirective {
   constructor() { }
 
   pickColor(): string {
-    const color = Math.floor(Math.random() * this.rainbowColors.length);
+    const color = Math.round(Math.random() * this.rainbowColors.length);
     return this.rainbowColors[color];
   }
 

@@ -7,22 +7,22 @@
     </div>
     <div class="d-flex flex-column dropdown-container" *ngIf="canSearch">
         <div appDropdown class="me-2 dropdown-selector">
+            
             <input
+            
                 #searchInput
                 type="search"
                 name=""
                 id=""
                 class="form-control">
+                
         </div>
         
-        <div class="dropdown-content">
-            <p>abcd</p>
-            <p>abcd</p>
-            <p>abcd</p>
-            <p>abcd</p>
-            <p>abcd</p>
-            <p>abcd</p>
+        <div  class="dropdown-content">
+            <div *ngFor="let item of subHeaderDropDown">
+            <p>{{item.text}}</p>
         </div>
+    </div>
     </div>
     <div>
         <ng-container *ngFor="let button of buttons">
