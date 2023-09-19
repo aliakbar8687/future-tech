@@ -1,3 +1,4 @@
+import { User } from 'src/app/models/User';
 import { inject } from '@angular/core';
 import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { Observable, switchMap, of } from 'rxjs';
@@ -8,7 +9,7 @@ export const roleGuard: CanActivateFn = (route, state): boolean | UrlTree | Obse
   const router: Router = inject(Router);
   
   return _authService.isLoggedIn$.pipe(switchMap(isLoggedIn => {
-    const index = Object.keys(route.data).findIndex(key => route.data[key] === isLoggedIn?.role);
+    const index = Object.keys(route.data).findIndex(key => route.data[key] === isLoggedIn);
     if (index !== -1) return of(true);
 
     return router.navigate(['not-found']);

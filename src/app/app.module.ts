@@ -11,6 +11,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { LoginComponent } from './login/login.component';
 import { SessionInterceptor } from './interceptor/session.interceptor';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { SessionInterceptor } from './interceptor/session.interceptor';
     HeaderComponent,
     NotFoundComponent,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

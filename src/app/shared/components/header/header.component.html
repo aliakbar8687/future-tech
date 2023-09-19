@@ -17,8 +17,17 @@
           </li>
         </ul>
         <div class="d-flex" role="search">
-          <button *ngIf="isLoggedIn" class="btn btn-outline-success" type="button" (click)="logout()">Logout</button>
-          <a *ngIf="!isLoggedIn" class="btn btn-primary" routerLink="/login">Login</a>
+          <ng-container *ngIf="isLoggedIn; else loginTemplate">
+            <button
+              class="btn btn-outline-success"
+              type="button"
+              (click)="logout()">Logout</button>
+          </ng-container>
+
+          <ng-template #loginTemplate>
+            <a class="btn btn-primary me-2" routerLink="/login">Login</a>
+            <a class="btn btn-outline-success" routerLink="/signup">signup</a>
+          </ng-template>
         </div>
       </div>
     </div>
