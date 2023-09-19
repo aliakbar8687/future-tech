@@ -1,0 +1,109 @@
+<div class="d-flex flex-column align-items-center mt-4">
+  <div class="m-2">
+    <h1>Create a New Account</h1>
+  </div>
+
+  <form [formGroup]="signupForm" (submit)="signup()">
+    <div class="d-flex flex-row justify-content-between mb-3">
+      <div class="me-2">
+        <label for="firstName" class="form-label">first name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="contact"
+          placeholder="arshad"
+          formControlName="firstName"
+        />
+      </div>
+      <div>
+        <label for="lastName" class="form-label">last name</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id="lastName"
+          placeholder="zamir"
+          formControlName="lastName"
+        />
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address</label>
+      <input
+        type="email"
+        class="form-control"
+        name=""
+        id="email"
+        placeholder="arshadzamir@gmail.com"
+        formControlName="email"
+      />
+    </div>
+
+    <p>Gender</p>
+    <div class="d-flex flex-row justify-content-between mb-3">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="male"
+          formControlName="gender"
+          value="male"
+        />
+        <label class="form-check-label" for="male">Male</label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="female"
+          formControlName="gender"
+          value="female"
+        />
+        <label class="form-check-label" for="female">Female</label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="contact" class="form-label"> contact</label>
+        <input
+        type="number"
+        class="form-control"
+        name=""
+        id="contact"
+        placeholder="123 456 7890"
+        formControlName="contact"
+        />
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label"> password</label>
+        <input
+            type="password"
+            class="form-control"
+            name=""
+            id="password"
+            placeholder="*********"
+            formControlName="password"/>
+    </div>
+
+    <div class="mb-3">
+        <select class="form-select" aria-label="Default select example" formControlName="type">
+            <option selected value="">Role</option>
+            <option value="admin">Admin</option>
+            <option value="super_admin">Super Admin</option>
+        </select>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-outline-primary me-2">signup</button>
+      <button
+        type="button"
+        class="btn btn-outline-danger me-2"
+        (click)="reset()"
+      >
+        Reset
+      </button>
+    </div>
+  </form>
+</div>
