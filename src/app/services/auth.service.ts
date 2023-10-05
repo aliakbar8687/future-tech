@@ -1,6 +1,9 @@
+import { loginResponse } from './../models/User';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { User } from '../models/User';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { User, loginRequest } from '../models/User';
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,13 +15,19 @@ export class AuthService {
   }
   isLoggedIn$ = new BehaviorSubject<User | null>(null);
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  login() {
-    this.isLoggedIn$.next(this.user)
+  login(data: loginRequest): Observable<loginResponse> {
+    return this.http.post<loginResponse>('admin/login',data);
+  }
+  
+  signup(data: loginRequest): Observable<loginResponse> {
+    return this.http.post<loginResponse>('admin', data)    
   }
 
-  logout() {
+  logout(): void {
     this.isLoggedIn$.next(null)
   }
 }

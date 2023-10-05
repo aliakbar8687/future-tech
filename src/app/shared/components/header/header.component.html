@@ -19,6 +19,7 @@
         <div class="d-flex" role="search">
           <button *ngIf="isLoggedIn" class="btn btn-outline-success" type="button" (click)="logout()">Logout</button>
           <a *ngIf="!isLoggedIn" class="btn btn-primary" routerLink='login'>Login</a>
+          <a class="btn btn-danger ms-2" routerLink='signup'>Sign Up</a>
         </div>
       </div>
     </div>

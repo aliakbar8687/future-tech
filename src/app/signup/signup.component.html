@@ -1,0 +1,199 @@
+<div class="d-flex flex-column align-items-center mt-4">
+  <div class="m-2">
+    <h1>Create a New Account</h1>
+  </div>
+
+  <form [formGroup]="signupForm" (ngSubmit)="signup()">
+    <div class="d-flex flex-row justify-content-between mb-3">
+      <div class="me-2">
+        <label
+          for="firstName"
+          class="form-label"
+          [ngClass]="{ 'text-danger': formErrors.firstName }"
+        >
+          First Name
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          placeholder="Monkey D."
+          formControlName="firstName"
+          [ngClass]="{ 'is-invalid': formErrors.firstName }"
+          (input)="validateForm()"
+        />
+        <span class="text-danger" *ngIf="formErrors.firstName">
+          {{ formErrors.firstName }}
+        </span>
+      </div>
+
+      <div>
+        <label
+          for="lastName"
+          class="form-label"
+          [ngClass]="{ 'text-danger': formErrors.lastName }"
+        >
+          Last Name
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          placeholder="Luffy"
+          formControlName="lastName"
+          [ngClass]="{ 'is-invalid': formErrors.lastName }"
+          (input)="validateForm()"
+        />
+        <span class="text-danger" *ngIf="formErrors.lastName">
+          {{ formErrors.lastName }}
+        </span>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="captian@straw-hat.com"
+        formControlName="email"
+      />
+    </div>
+
+    <p class="form-label">Gender</p>
+    <div class="d-flex flex-row justify-content-between mb-3">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="male"
+          formControlName="gender"
+          value="male"
+        />
+        <label class="form-check-label" for="male">Male</label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="female"
+          formControlName="gender"
+          value="female"
+        />
+        <label class="form-check-label" for="female">Female</label>
+      </div>
+    </div>
+
+    <label
+      for="contact"
+      class="form-label"
+      [ngClass]="{ 'text-danger': formErrors.contact }"
+    >
+      Mobile Number
+    </label>
+
+    <input
+      type="number"
+      class="form-control"
+      id="contact"
+      placeholder="1234 567 890"
+      formControlName="contact"
+      [ngClass]="{ 'is-invalid': formErrors.contact }"
+      (input)="validateForm()"
+    />
+    <div class="text-danger" *ngIf="formErrors.contact">
+      {{ formErrors.contact }}
+    </div>
+
+    <label 
+    for="password" 
+    class="form-label" 
+    [ngClass]="{ 'text-danger': formErrors.firstName }">
+     Password 
+    </label>
+
+    <input
+      type="password"
+      class="form-control"
+      name=""
+      id="password"
+      placeholder="********"
+      formControlName="password"
+      [ngClass]="{ 'is-invalid': formErrors.password }"
+      (input)="validateForm()"
+    />
+
+    <span class="text-danger" *ngIf="formErrors.password">
+      {{ formErrors.password }}
+    </span>
+
+    <label 
+    class="form-label" 
+    [ngClass]="{ 'text-danger': formErrors.firstName }">
+     Password 
+    </label>
+    
+    <ng-container *ngFor="let skill of skill.controls; let i = index">
+      <div class="mb-3" [formGroupName] = i>
+        <button
+          type="button"
+          class="btn btn-link"
+          (click)="removeSkill(i)">
+          Remove Skill
+        </button>
+        <div class="d-flex">
+          <input
+          type="Text"
+          class="form-control me-1"
+          name=""s
+          placeholder="3 Sword Style"
+          formControlName="name"
+          />
+          <input
+          type="Text"
+          class="form-control"
+          name=""s
+          placeholder="good in direction"
+          formControlName="extra"
+          />
+        </div>
+      </div>
+    </ng-container>
+    <button
+      type="button"
+      class="btn btn-outline-primary me-2"
+      (click)="addSkill()">
+      Add New Skill
+    </button>
+    
+    
+    <div class="mt-2">
+      <label class="form-label" for="floatingSelect">Type</label>
+      <select
+        class="form-select"
+        id="floatingSelect"
+        aria-label="Floating label select example"
+        formControlName="role"
+      >
+        <option value="admin" selected>Admin</option>
+        <option value="crew">Crew</option>
+        <option value="pirate">Pirate</option>
+      </select>
+    </div>
+
+    <div class="p-2 justify-content-center">
+      <button type="submit" value="submit" class="btn btn-outline-primary me-2">
+        Sign Up
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-danger me-2"
+        (click)="reset()"
+      >
+        Reset
+      </button>
+    </div>
+  </form>
+</div>
